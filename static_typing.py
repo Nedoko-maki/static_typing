@@ -154,7 +154,7 @@ def static_type(f):
 
         _is_static = True if obj_type == "method" and issubclass(f.__class__, staticmethod) else False
 
-        if not _is_static:  # checking whether a decorator has a __func__ arg.
+        if not _is_static: 
             param_names = f.__code__.co_varnames[:f.__code__.co_argcount]
         else:
             param_names = f.__func__.__code__.co_varnames[:f.__func__.__code__.co_argcount]
@@ -195,7 +195,9 @@ def dont_static_type(f):  # decorator to exclude static-typing methods of a clas
 
 class StaticBase:
     """
-    To use, annotate here, like:
+    To use, first inherit from StaticBase. 
+    
+    Then annotate here, like:
     x: int
     y: str
 
