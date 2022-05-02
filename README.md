@@ -14,3 +14,6 @@ Example:
 
         def __init__(self, x, y):
             self.x, self.y = x, y
+            
+            
+EDIT: I am now aware I have essentially ripped off Pydantic, however seeing this mess work makes the noggin release dopamine.
