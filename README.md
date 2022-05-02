@@ -7,10 +7,10 @@ If you want to exclude any methods from static-typing, use the @dont_static_type
 
 Ex:
 
-class A(StaticBase):
+    class A(StaticBase):
     
-    x: int
-    y: str
-    
-    def __init__(self, x, y):
-        self.x, self.y = x, y
+        x: int
+        y: str
+
+        def __init__(self, x, y):
+            self.x, self.y = x, y
