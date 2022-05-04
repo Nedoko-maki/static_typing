@@ -65,6 +65,9 @@ class _TypeWrapper:
             self.subscript_types = None
         # print(f"BASE: {self.base_type}, SUBSCRP: {self.subscript_types}")
 
+    def __repr__(self):
+        return f"_TypeWrapper(base: {self.base_type},  subscript: {self.subscript_types})"
+
 
 class _TypeContainer:
     def __init__(self, _type):
@@ -77,6 +80,9 @@ class _TypeContainer:
                 self.types[type_.base_type] = {type_}
             else:
                 self.types[type_.base_type].add(type_)
+
+    def __repr__(self):
+        return f"_TypeContainer({self.types})"
 
     @staticmethod
     def _unpack_type(_type):
@@ -97,7 +103,6 @@ def _validate_type(tc):
 
 
 def _validate_type_wrapper(tc):
-    # print(tc.param_types.types, tc.param_value)
     if type(tc.param_value) not in tc.param_types.types:
         return  # meaning the value is a class instance, since it's subclassed from object and is not in the types set.
 
@@ -154,7 +159,7 @@ def static_type(f):
 
         _is_static = True if obj_type == "method" and issubclass(f.__class__, staticmethod) else False
 
-        if not _is_static: 
+        if not _is_static:  # checking whether a decorator has a __func__ arg.
             param_names = f.__code__.co_varnames[:f.__code__.co_argcount]
         else:
             param_names = f.__func__.__code__.co_varnames[:f.__func__.__code__.co_argcount]
@@ -195,9 +200,7 @@ def dont_static_type(f):  # decorator to exclude static-typing methods of a clas
 
 class StaticBase:
     """
-    To use, first inherit from StaticBase. 
-    
-    Then annotate here, like:
+    To use, annotate here, like:
     x: int
     y: str
 
