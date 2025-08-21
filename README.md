@@ -17,3 +17,5 @@ Example:
             
             
 EDIT: I am now aware I have essentially ripped off Pydantic, however seeing this mess work makes the noggin release dopamine.
+
+EDIT 2: This looks like a debugging mess, and I want to maybe redo it when I have time. 
